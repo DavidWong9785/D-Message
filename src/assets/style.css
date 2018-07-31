@@ -1,0 +1,80 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?s3lksd');
+  src:  url('fonts/icomoon.eot?s3lksd#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?s3lksd') format('truetype'),
+    url('fonts/icomoon.woff?s3lksd') format('woff'),
+    url('fonts/icomoon.svg?s3lksd#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  margin-right: 5px;
+  font-weight: 100;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes rotating{
+  from{transform:rotate(0)}
+  to{transform:rotate(360deg)}
+}
+  
+.icon-spinner2:before {
+  display: inline-block;
+  content: "\e97b";
+  animation:rotating 1.2s linear infinite;
+  
+}
+.icon-smile:before {
+  content: "\e9e1";
+  color: #00CD00;
+}
+.icon-smile2:before {
+  content: "\e9e2";
+}
+.icon-baffled:before {
+  content: "\e9f3";
+  color: #efa517;
+}
+.icon-baffled2:before {
+  content: "\e9f4";
+}
+.icon-notification:before {
+  content: "\ea08";
+}
+.icon-info:before {
+  content: "\ea0c";
+  color: #436EEE;
+}
+.icon-cancel-circle:before {
+  content: "\ea0d";
+  color: #EE2C2C;
+}
+.icon-blocked:before {
+  content: "\ea0e";
+}
+.icon-cross:before {
+  content: "\ea0f";
+  font-size: 8px!important;
+  position: relative;
+  top: -0.8px;
+  margin-left: 8px;
+}
+.icon-checkmark:before {
+  content: "\ea10";
+}
+.icon-checkmark2:before {
+  content: "\ea11";
+}
