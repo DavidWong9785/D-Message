@@ -3,14 +3,15 @@ import messageTemplate from './message.vue'
 //默认配置
 const defaultProp = {
 	content: 'Hello D-Message',	// 默认文案
-	position: 'bottom',   // 默认显示位置
+	animation: 'rotate',  // 动画
+  position: 'bottom', // 默认显示位置
 	duration: 3000,     // 持续时间
 	closable : false,
 	callback : ''
 }
 
 //清除Message
-function clearMessage(){
+function clearMessage() {
 	//清除定时器
 	clearTimeout(Message.timer)
 	//不显示Message
@@ -27,7 +28,7 @@ const Message = {
 	//Message节点实例
 	MessageInstance: null,
 	// 定时器
-	timer: null,  	
+	timer: null,
 	// vue导入使用外部插件(vue.use)，传入参数是install方法
 	install (Vue) {
 		//获取Vue对象
@@ -36,7 +37,7 @@ const Message = {
 		}
 		// 注册组件
 		Vue.component('Message', messageTemplate)
-		// 把逻辑封装到Vue原型的$msg方法上，参数obj是msg样式参数
+		// 把逻辑封装到Vue原型的$Message方法上，参数options是Message样式参数
 		let msg = (type, options) => {
 			//如果Message还在显示，就先删除Message和定时器，重置默认信息
 			if (Message.showMessage || Message.MessageInstance) {
@@ -46,16 +47,20 @@ const Message = {
 			if (!Message.MessageInstance) {
 				// 创建构造器，定义好提示信息的模板
 				let MessageT = Vue.extend({
-					  template: `<transition name='fade-up'>
-					  				<div class="D-Message ${options.position}" v-show="show">
-										 <div class="D-Message-Content" style="background: #eee">
-										 	<i class="icon-${type}"></i>  
-											<p style="display:inline-block;margin:3px 0">${options.content}</p>
-											<i class="icon-cross"  @click="close()" v-show="${options.closable} == true"></i>
-					  					</div>
-					  					<Message>
-					  					</Message>
-					  				</div>
+					  template: `<transition name="${options.animation}">
+                      <div class="D-Message D-Message-Animation-${options.position}" v-show="show">
+                      	<div class="D-Message-Content">
+                      		<div class="D-Message-left-icon">
+                      			<i class="icon-${type}"></i>  
+                      		</div>
+                      		<p class="D-Message-Content-text">${options.content}</p>
+                      		<div>
+                      			<i class="icon-cross" style="pointer-events: auto;cursor:pointer!important" @click="close()" v-show="${options.closable} == true"></i>
+                      		</div>
+                      	</div>
+                      	<Message>
+                      	</Message>
+                      </div>
 					  			</transition>`,
 					data () {
 						return {

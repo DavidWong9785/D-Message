@@ -24,50 +24,63 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      
     }
   },
   methods: {
     defaultMsg () {
-      this.$Message.info();
+      this.$Message.info({
+        duration: 100000
+      });
     },
     contentMsg () {
       this.$Message.warning({
-        content: '我是警告Message，内容自定义!'
+        content: '我是自定义的警告Message，默认动画rotate，默认位置bottom，默认持续时间3s'
       })
     },
     durationMsg () {
       this.$Message.success({
-        content: '我是成功Message，持续时间为设为1s，默认为3s',
-        duration: 1000
+        content: '我是自定义的成功Message，持续时间为设为1s，动画为scale，默认位置bottom',
+        duration: 1000,
+        animation: 'scale'
       })
     },
     topMsg () {
       this.$Message.loading({
-        content: '我是加载Message，显示在屏幕上方，默认在下方',
+        content: '我是自定义的加载Message，位置显示在屏幕上方，动画为fade，默认持续时间3s',
+        animation: 'fade',
         position: 'top'
       })
     },
     centerMsg () {
       this.$Message.error({
-        content: '我是错误Message，显示在屏幕中间，默认在下方',
-        position: 'center',
-        duration: 1800
+        content: '我是自定义的错误Message，位置显示在屏幕中间，动画为translate，持续时间2s',
+        animation: 'translate',
+        duration: 2000,
+        position: 'center'
       })
     },
     closeMsg () {
       this.$Message.error({
-        content: '我是错误Message，可关闭',
-        closable: true
+        content: '我是自定义的可关闭的错误Message，位置显示在屏幕上方，动画为translate，持续时间2s',
+        closable: true,
+        animation: 'translate',
+        duration: 2000,
+        position: 'top'
       })
     },
     callbackMsg () {
       this.$Message.loading({
+        animation: 'fade',
         position: 'center',
-        content: '消失后执行回调，手动关闭也算',
+        content: '我是自定义的可关闭的有回调函数的错误Message，消失后执行回调，手动关闭也算消失后执行回调，持续时间1s，动画为fade，位置显示在屏幕中间',
         duration: 1000,
         callback : () => {
-          this.$Message.success('这是Vue-Message结束之后的回调,在前一个msg消失的时候触发')
+          this.$Message.success({
+            content:'这是D-Message结束之后的回调，在前一个msg消失的时候触发这是D-Message结束之后的回调，持续时间10s，可关闭',
+            duration: 100000,
+            closable: true
+          })
         },
         closable: true
       })

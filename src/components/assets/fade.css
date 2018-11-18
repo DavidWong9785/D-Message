@@ -1,0 +1,21 @@
+.D-Message-Animation-bottom.fade-enter {
+   opacity: 0;
+   transform:translate(0, 80px);
+}
+.D-Message-Animation-center.fade-enter {
+    opacity: 0;
+    transform:translate(0,calc(-50% + 10px));
+}
+
+.D-Message-Animation-top.fade-enter {
+    opacity: 0;
+    transform:translate(0, -80px);
+}
+.fade-enter-to, 
+.fade-leave-to{
+    transition: all .3s ease-in-out;
+}
+.fade-leave-to{
+    opacity: 0;
+    transform:translate(0, 10px);
+}
